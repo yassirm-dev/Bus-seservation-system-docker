@@ -1,0 +1,166 @@
+body {
+  /* background-image: url("../buses/images/bg_image1.png");  */
+  background: linear-gradient(-45deg, #270ec9, #4242f7, #57045e, #03435b);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+#bus-search-form {
+  padding: 10px;
+  align-self: center;
+  background: linear-gradient(-45deg, #e73c7e, #ee7752, #23d5ab, #23a6d5);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#image_slider {
+  padding: 2px;
+  height: 400px;
+  width: 30px;
+}
+
+i {
+  color: rgb(2, 30, 40);
+  font-family: 'Montaga', serif;
+}
+
+#bus-div {
+  border: 3px solid black;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  width: 100%;
+}
+
+.vl {
+  border-left: 6px solid green;
+  height: 500px;
+}
+
+.v2 {
+  border-left: 6px solid green;
+  height: 500px;
+}
+
+.volkwov {
+  font-family: 'Volkhov', serif;
+  font-size: 27px;
+}
+
+#volkwov-text {
+  font-family: 'Volkhov', serif;
+  font-size: 16px;
+}
+
+.travel {
+  margin-right: 110px;
+}
+
+#logo-text {
+  font-family: 'Lobster Two', cursive;
+  font-size: 34px;
+}
+
+#ticket {
+  margin-left: 100px;
+  width: 600px;
+  border: 1px solid black;
+}
+
+#text-ticket {
+  font-family: 'Lobster Two', cursive;
+  font-size: 16px;
+  display: inline;
+  height: 400px;
+}
+
+p {
+  font-family: 'Lobster Two', cursive;
+}
+
+label {
+  font-family: 'Lobster Two', cursive;
+}
+
+.rounded {
+  width: 700px;
+  height: 400px;
+  margin-right: 0px;
+  display: inline;
+}
+
+#visitor_form {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: left;
+  padding: 10px;
+  border: 2px solid grey;
+  background-image: url('../buses/images/salafy_seat2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bus_image {
+  width: 100px;
+  height: 100px;
+}
+
+#couresel {
+  background-color: lightgray;
+  border-left: 10px solid rgb(93, 196, 19);
+}
+
+.testimonial-carousel .carousel-control::before {
+  color: rgb(93, 196, 19);
+}
+
+.select_s-d {
+  padding: 5px;
+}
+
+input-forms:hover {
+  background-color: rgb(223, 226, 14);
+}
+
+.btn :hover {
+  background: blue;
+}
+
+.testimonial-carousel .carousel-control {
+  opacity: unset;
+}
+
+.vl {
+  border: 6px solid green;
+  height: 500px;
+  background-color: rgb(36, 8, 8);
+}
+
+.jumbotron {
+  border-radius: 0%;
+}
+
+.fixed-bottom {
+  text-align: justify;
+}
+
+#seat-info {
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  width: fit-content;
+  padding-right: 10px;
+  padding-top: 5px;
+  border-radius: 20px;
+  color: black;
+}

@@ -1,0 +1,37 @@
+{% extends 'buses/base.html'%}
+{% load static%}
+{%  load crispy_forms_tags %}
+{% block content %}
+<div class="container text-center"" >
+
+   
+            <div class="content-section ">
+                <div class="alert alert-info">
+                    <strong>Please login here.</strong>
+                </div>
+                <form method="POST"  id="visitor_form">
+                        {% csrf_token %}
+                    <fieldset class="form-group">
+                            <legend class="border-bottom mb-4 h3 text-center volkwov">Log In</legend>
+                        <div class="form-group ">
+                           {{form|crispy}}
+                        <div class="form-group">
+                                <button class="btn btn-outline-info btn-block"  type="submit">Log In</button>
+                        </div>
+                    </fieldset> 
+                </form>
+                <div class="border-top pt-3">
+                    <small class="h5 text-white">
+                       New here?
+                        <a href="{% url 'register'%}" class="ml-2 btn btn-info">Sign Up</a>
+                        <a href="{% url 'password_reset' %}" class="ml-2 large">Forgot Password?</a>
+
+                    </small>
+
+                </div>
+            </div>
+      
+  
+
+{% endblock  %}
+    

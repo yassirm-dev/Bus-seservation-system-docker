@@ -1,0 +1,120 @@
+{% extends 'buses/base.html'%}
+{% load static%}
+{% load crispy_forms_tags%}
+{% block content %}
+<div class="container-fluid">
+
+  <div class="container-fluid ">
+    {% if error %}
+    <div class="row mb-5">
+      <div class='alert alert-danger'>
+        {{error}}
+      </div>
+    </div>
+    {% endif %}
+
+
+    <div>
+      <div class=" mb-4 content-section ">
+        <form method="POST" id="visitor_form" class="row" action="{% url 'booking-details' %}">
+          {% csrf_token %}
+          <fieldset class="form-group col-4 ">
+            <legend class="border-bottom mb-4 h3 text-center volkwov">Book bus</legend>
+            <div class="form-group mb-2 col">
+              <label>Bus id:</label><br>
+              <input type="number" name="bus_id" value="{{busId}}" class="text-center" />
+              <label for="form-control">Seat Numbers:</label>
+
+              <input type="text" readonly class="form-control" id="seat_nos" name="seat_nos" value="">
+
+              <label for="form-control">Number of Seats:</label>
+              <input type="text" readonly class="form-control" id="count" name="count" value="">
+              {{bus|crispy}}
+            </div>
+            </legend>
+          </fieldset>
+
+          <fieldset class="form-group col-8">
+            <legend class="border">
+              <h3 class="text-center volkwov text-white">Select seats below</h3>
+            </legend>
+            <div class="row">
+              <div class="col-5">
+                <div id="seat-info">
+                  <ul style="list-style-type: none;">
+                    <li style="display: inline-block;"><img 
+                        style="height: 40px; width: 40px;" src="{% static 'buses/images/seat_booked.png' %}">
+                      <p for="Booked Seat">Booked Seat</p>
+                    </li>
+                    <li style="display: inline-block;margin-right:4px"><img 
+                        style="height: 40px; width: 40px;" src="{% static 'buses/images/seat_available.png' %}">
+                      <p for="Available Seat" style="margin-right:4px;">Available Seat</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="form-group align-center mt-5">
+                  <button class="btn btn-info   border-top " style="width: 40%;" type="submit">Book bus</button>
+                  <button class="btn btn-danger ml-4" onclick="location.reload()" style="width: 30%;">Clear
+                    seats</button>
+                </div>
+              </div>
+              <div>
+                <div id="bus-div" class="row">
+                  <div class="col-1">
+                    <img src="{% static 'buses/images/seat_driver.png' %}" alt="Driver"
+                      style="height: 60px; width: 60px;">
+                    <label for="Driver" class="ml-2">Driver</label>
+
+                    <img class="align-items-end" src="{% static 'buses/images/bus_door.png' %}" alt="Bus-door"
+                      style="vertical-align:bottom;margin-top:80px;height: 60px; width: 60px;">
+                    <label for="Door" class="ml-2">Door</label>
+                  </div>
+                  <div class="col-11">
+                    {% for seat,val in seats.items %}
+                    {% if val >= 1 %}
+                    <input class='seat-booked' type="image" disabled style="height: 50px; width: 43px;"
+                      src="{% static 'buses/images/seat_booked.png' %}" id="{{seat}}" value="{{seat}}">
+
+                    {% else %}
+                    <input type="image" style="height: 50px; width: 43px;" onclick="bookSeat(this.id)"
+                      src="{% static 'buses/images/seat_available.png' %}" id="{{seat}}" value="{{seat}}">
+
+                    {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+
+            </div>
+      </div>
+      <div>
+        </fieldset>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function bookSeat(id) {
+
+      document.getElementById('seat_nos').value += document.getElementById(id).value + ",";
+
+      document.getElementById(id).src = "{% static '/buses/images/booked.png' %}";
+      document.getElementById(id).disabled = true;
+
+      var val = document.getElementById("count").value;
+
+      if (val) {
+        val = parseInt(val) + 1;
+        document.getElementById("count").value = val;
+      }
+      else {
+        document.getElementById("count").value = 1;
+      }
+    }
+
+  </script>
+  {% endblock %}

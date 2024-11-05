@@ -1,0 +1,37 @@
+{% extends "buses/admin_base.html" %}
+
+{% block content %}
+
+<div class="col-md-4 col-xl-3" style="margin-top:150px;margin-left:10px;padding:5px;">
+
+
+
+
+    <div class="card mb-4"style="width:18rem;">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-8" >
+                    <h5 class="card-title">{{object.username}}</h5>
+                    <h6 class="text-secondary">Email: {{object.email}}</h6>
+                    <h6 class="text-secondary">First Name: {{object.first_name}}</h6>
+                    <h6 class="text-secondary">Last Name: {{object.last_name}}</h6>
+                </div>
+                <div class="col-4">
+                    <a class="btn btn-info" href='{% url 'user-update' user.id %}' style="margin-right: 10px;">Edit</a>
+                    <a class="btn btn-danger mt-2" href='{% url 'user-delete' user.id %}' style="margin-right: 10px;">Delete</a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'buses/admin_base.html'%}
+{% load static%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container text-center" style="margin-top:10%;">
+            <div class="content-section">
+                <form method="POST"  id="visitor_form" class="col-8"> 
+
+                        {% csrf_token %}
+                    <fieldset class="form-group">
+                            <legend class="border-bottom mb-4 h3 text-center volkwov">Edit User Here</legend>
+                        <div class="form-group ">
+                           {{form|crispy}}
+                        <div class="form-group">
+                            <button class="btn btn-info btn-lg mt-5"  type="submit">Confirm</button>
+                        </div>
+                    </fieldset> 
+                </form>
+            </div>
+      
+  
+
+{% endblock  %}
+    

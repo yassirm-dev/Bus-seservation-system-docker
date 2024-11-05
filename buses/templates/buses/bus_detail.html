@@ -1,0 +1,43 @@
+{% extends "buses/admin_base.html" %}
+
+{% block content %}
+
+<div class="col-md-4 col-xl-3" style="margin-top:150px;margin-left:10px;padding:5px;">
+
+
+
+
+    <div class="card mb-4"style="width:18rem;">
+        <img class="card-img-top bg-dark" src="{{bus.image.url}}" alt="Card image cap"
+            style="height: 150px;padding:5px" />
+        <div class="card-body">
+            <div class="row">
+                <div class="col-8" >
+                    <h5 class="card-title">{{object.name}}</h5>
+                    <h6 class="text-secondary">Date: {{object.date}}</h6>
+                    <h6 class="text-secondary">From: {{object.source}}</h6>
+                    <h6 class="text-secondary">To: {{object.destination}}</h6>
+                    <h6 class="text-secondary">No of Seats: {{object.no_of_seats}}</h6>
+                    <h6 class="text-secondary">Remaining Seats: {{object.remaining_seats}}</h6>
+                    <h6 class="text-secondary">Price: {{object.price}}</h6>
+                    <h6 class="text-secondary">Departure Time: {{object.departure_time}}</h6>
+                </div>
+                <div class="col-4">
+                    <a class="btn btn-info" href='{% url 'bus-update' bus.id %}' style="margin-right: 10px;">Edit</a>
+                    <a class="btn btn-danger mt-2" href='{% url 'bus-delete' bus.id %}' style="margin-right: 10px;">Delete</a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+</div>
+
+{% endblock %}

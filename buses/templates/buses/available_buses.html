@@ -1,0 +1,66 @@
+{% extends 'buses/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container" >
+{% if error %}
+  <div class="alert alert-danger text-center h4">
+  <strong>Sorry!</strong>
+  {{error}}</div>
+  <div class='container-fluid text-center'>
+    <a class='btn btn-info ' href="{% url 'buses-home' %}">Home</a>
+  </div>
+{% else %}   
+{% comment %} <div class="alert alert-warning text-center">
+  <strong>Note:</strong> You are required to use the Bus ID during booking.
+</div> {% endcomment %}
+ <div class="">
+  <form method='post' action='{% url 'book-bus'%}'>
+  {% csrf_token %}
+        <table class="table table-stripped bg-white">
+             <thead class="thead-dark">
+                <tr >
+                    <th>Bus ID</th>
+                    <th>Bus Image</th>
+                    <th>Bus Name</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Seats remaining</th>
+                    <th>Price</th>
+                    <th>Departure time</th>
+                    <th>Book</th>
+                </tr>
+            </thead>
+      {% for bus in buses %}
+     <tr class="h6">
+        <td class="bg-warning"   >
+          <input readonnly class="bg-warning text-center" name='bus_id' value='{{bus.id}}' />
+        </td>
+        <td><img src="{{bus.image.url}}" class="bus_image"/></td>
+        <td>{{bus.name}}</td>
+        <td>{{bus.source}}</td>
+        <td>{{bus.destination}}</td>
+        <td class="bg-warning text-center">{{bus.remaining_seats}}</td>
+        <td>Ksh.{{bus.price}}</td>
+        <td>{{bus.departure_time}}</td>
+        <td>
+          <button type='submit' 
+          class="btn {% if bus.remaining_seats == 0  %}
+          btn-secondary
+          {% else %}
+          btn-info btn-block
+          {% endif %} "
+          {% if bus.remaining_seats == 0  %}
+          value='Booked'
+          disabled
+          {% endif %} >{% if bus.remaining_seats == 0  %}
+          Booked {% else%} Book
+          {% endif %}</button>
+        </td>
+      </tr>
+        {% endfor %}
+        </table>
+  </form>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

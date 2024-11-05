@@ -1,0 +1,46 @@
+{% extends 'buses/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container" style="margin-top: 10%;">
+    {% if error %}
+        <div class="alert alert-danger text-center h4">
+        <strong>Sorry!</strong>
+        {{error}}
+        </div>
+        <div class='container-fluid text-center'>
+            <a class='btn btn-info ' href="{% url 'buses-home' %}">Find bus</a>
+        </div>
+    {% else %}   
+        <div class="">
+        <table class="table table-stripped bg-info">
+             <thead class="thead-dark">
+                <tr >
+                    <th>Booking ID</th>
+                    <th>Bus Name</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Price</th>
+                    <th>Date</th> 
+                    <th>Departure time</th>
+                    <th>No of Seats</th>
+                    <th>Booking Status</th>
+                </tr>
+            </thead>
+            {% for booking_info in traveller_bookings_info%}
+            <tr class="h6">
+                <td>{{booking_info.id}}</td>
+                <td>{{booking_info.bus_name}}</td>
+                <td>{{booking_info.source}}</td>
+                <td>{{booking_info.destination}}</td>
+                <td>Ksh.{{booking_info.price}}</td>
+                <td>{{booking_info.date}}</td>
+                <td>{{booking_info.time}}</td>
+                <td>{{booking_info.no_of_seats}}</td>
+                <td>Booked</td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

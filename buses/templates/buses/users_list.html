@@ -1,0 +1,23 @@
+{% extends "buses/admin_base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="col-md-4 col-xl-3" style="margin-top:150px;margin-left:10px;padding:5px;">
+    {% for user in users_list %}
+
+    <div class="card mb-4" style="width: 18rem;">
+        <div class="card-body">
+            <a href="{% url 'user-detail' user.id%}">
+                <h5 class="card-title">{{user.username}}</h5>
+            </a>
+            <h6 class="text-secondary">{{user.email}}</h6>
+
+
+        </div>
+    </div>
+    {% endfor %}
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'buses/base.html'%}
+{% load static%}
+{% block content %}
+    <div class="container-fluid " style="margin-top:10%;" >
+        <div class="alert alert-success text-center">
+            <h3>Dear {{user.username}}, you have successfully booked! Please download your ticket below</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-sm-4">
+             <!-- Button to Open the Modal -->
+        <button type="button" class="btn btn-primary btn-lg" onclick="downloadTicket()">
+            Download your ticket
+        </button>
+        </div>
+        <!-- click to see customer booking -->
+        <div class="col-lg-6 col-sm-8">
+            <a class="btn btn-info btn-lg" href="{% url 'traveller-bookings' %}">See my bookings</a>
+        </div>
+
+    </div>
+    <hr>
+    <hr>
+   <div>
+       
+            <div class="row bg-white ml-5" id="ticket">
+            
+                <div class="col-12 header">
+                    <img ' style="width: 100px;" src="{% static 'buses/images/Salafy_logo.png' %}"/>
+
+                    <h1 class="text-center" id="logo-text" style="display: inline;">Salafy Bus receipt</h1>
+                    <span style="background-color: rgb(209, 171, 124);"
+                     class="p-3 mt-3 ml-5"><b>receipt no:</b>{{booking_details.id}}</span>
+
+                    <hr>
+                </div>
+                <div class="info col-6">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><b>Name: </b>{{user.username}}</li>
+                        <li class="list-group-item"><b>Phone: </b> {{booking_details.phone_no}}</li>
+                        <li class="list-group-item"><b>From: </b>{{booking_details.source}}</li>
+                        <li class="list-group-item"><b>To: </b>{{booking_details.destination}}</li>
+                        <li class="list-group-item"><b>Date: </b>{{booking_details.date}}</li>
+                        <li class="list-group-item"><b>Departure: </b>{{booking_details.time}}</li>
+
+                    </ul>
+                </div> <b></b>
+                <div class="info col-6">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><b>Pickup Station: </b>{{booking_details.pick_up_station}}</li>
+                        <li class="list-group-item"><b>Bus: </b>{{booking_details.bus_name}}</li>
+                        <li class="list-group-item"><b>No of seats: </b>{{booking_details.no_of_seats}}</li>
+                        <li class="list-group-item"><b>Seats: </b>{{booking_details.seat_numbers}}</li>
+                        <li class="list-group-item"><b>Seat Price: </b>{{bus.price}}</li>
+                        <li class="list-group-item"><b>Total: </b><h3>Ksh. {{booking_details.price}}</h3></li>
+                    </ul>
+                </div>
+                <div class="text-center text-success mt-3 mb-4" id="volkwov-text"
+                 style="background-color: blue;height:3px;width:100%" >Thank you for booking with us😉!</div><hr>
+                <div class="container-fluid bg-dark text-white pt-3 pb-2">
+                  <span class="col-6 text-left" id="text-ticket">Salafy, we deliver as we promise.</span>  
+                  <span class="col-6 ml-5" id="text-ticket">Contact Us: 0702283640</span> 
+                </div>
+            </div>    
+    <!-- <div class="bg-white" style="width:300px;">
+    <img class=""style="width=100px;height:300px;display:inline;"
+     src="{{bus.image.url}}">
+    </div> -->
+ 
+{% endblock  %}
+    

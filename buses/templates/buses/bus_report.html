@@ -1,0 +1,109 @@
+{% extends "buses/admin_base.html" %}
+{% load static %}
+{% load mathfilters %}
+{% load crispy_forms_tags%}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid " style="margin-top:10%;">
+  <div class="container-fluid ">
+    <div class="row">
+      <div class="col-4">
+        <div class="content-section ">
+          <form method="POST" id="visitor_form" class="fixed" action="{% url 'bus-report' %}">
+            {% csrf_token %}
+            <fieldset class="form-group ">
+              <legend class="border-bottom mb-4 h3 text-center text-white text-outline-info volkwov">See Bus Reports
+              </legend>
+              <div class="form-group ">
+                <label>Select Bus</label>
+                <select class="form-control" name='bus_name'>
+                  {% for bus in buses %}
+                  <option>{{bus.name}}</option>
+                  {% endfor %}
+
+                </select>
+              </div>
+              <div class='form-group' col-12>
+                <label>Start Date:</label>
+                <input type="date" name="start_date" class="text-center" />
+              </div>
+              <div class='form-group' col-12>
+                <label>End Date:</label>
+                <input type="date" name="end_date" class="text-center" />
+              </div>
+              <div class='form-group' col-12>
+                <button class="btn btn-dark  border-top btn-block" type="submit">Request Report</button>
+              </div>
+              </legend>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <div class="col-8 ">
+        <div class="alert alert-info text-center">
+          <h4>Your Reports will be shown here</h4>
+        </div>
+        {% if search_results %}
+        <div style="background-color:white;margin-left:5px;align-content: center; margin-right:5px;" id="table">
+          <div >
+            <a class="navbar-brand ml-4" href="{% url 'buses-home'%}">
+              <img style="width: 100px;" src="{% static 'buses/images/Salafy_logo.png' %}" />
+              <span id="logo-text" class="text-dark">Salafy Bus</span>
+            </a>
+            <div class="v1" style="display:inline-block">
+            </div>
+          </div>
+
+
+          <table class="table table-striped table-bordered bg-white">
+            <tr class="text-center">
+              <th colspan="8" class="bg-dark text-white">Report for {{bus_name}} from date: {{start_date}} to date:
+                {{end_date}}</th>
+            </tr>
+            <tr class="bg-dark text-white">
+              <td>Date</td>
+              <td>From</td>
+              <td>To</td>
+              <td>Seats <br>Full</td>
+              <td>Price<br> per seat</td>
+              <td>Seats<br> Remainig</td>
+              <td>Total <br>Amount(Ksh.)</td>
+              <td class="p-3">Comments</td>
+            </tr>
+            {% for bus in search_results %}
+            <tr>
+              <td>{{bus.date}}</td>
+              <td>{{bus.source}}</td>
+              <td>{{bus.destination}}</td>
+              <td>{{bus.no_of_seats| sub:bus.remaining_seats }}</td>
+              <td>{{bus.price}}</td>
+              <td>{{bus.remaining_seats}}</td>
+              <td>{{bus.no_of_seats| sub:bus.remaining_seats| mul:bus.price}}</td>
+              <td class="pl-5 pr-5"></td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+        <button class="btn btn-info btn-medium" onclick="download()">Download report</button>
+
+      </div>
+
+      {% else %}
+      <div class="alert alert-danger text-center h2">{{error}}</div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+</div>
+<script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+
+<script>
+  function download() {
+    const form = document.getElementById('table');
+    html2pdf()
+      .from(form)
+      .save();
+  }
+</script>
+{% endblock content %}

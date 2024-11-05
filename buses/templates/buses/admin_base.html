@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'buses/main.css' %}">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lobster+Two:ital,wght@1,700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montaga&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lobster+Two:ital,wght@1,700&family=Volkhov&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+        <script src="{% static 'buses/js/text.js' %}"></script>
+
+
+</head>
+
+<body>
+
+    <header class="site-header ">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+            <div class="container-fluid" style="background-color: black;margin:0px;width:100%">
+                <a class="navbar-brand ml-4" href="#">
+                    <img style="width: 100px;" src="{% static 'buses/images/Salafy_logo.png' %}" />
+                    <span id="logo-text">Salafy Bus</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <div class="navbar-nav mr-auto">
+                        <a class="nav-item nav-link" href="{% url 'users' %}">Users</a>
+                        <a class="nav-item nav-link" href="/about">Log Out</a>
+                    </div>
+                    <!-- Navbar Right Side -->
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="{% url 'buses' %}">Buses</a>
+                        <a class="nav-item nav-link" href="{% url 'bus-new'%}">Add Bus</a>
+                        <a class="nav-item nav-link" href="{% url 'bus-report' %}">Bus Reports</a>
+                        <a class="nav-item nav-link" href="#">Bookings</a>
+                        <a class="nav-item nav-link" href="#">Seats Booked</a>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+        {% block content %}
+          
+        {% endblock  %}
+  
+   
+
+            <!-- jQuery first, then Tether, then Bootstrap JS. -->
+            <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+                integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+                integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+                crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+                integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+                crossorigin="anonymous"></script>
+</body>
+
+</html>

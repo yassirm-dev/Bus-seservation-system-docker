@@ -1,0 +1,33 @@
+{% extends "buses/admin_base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="container">
+    <div class="row">
+        {% for bus in bus_list %}
+
+        <div class="col-md-4 col-xl-3" style="margin-top:150px;margin-left:10px;padding:5px;">
+        
+            <div class="card mb-4" style="width: 18rem;">
+                <img class="card-img-top bg-dark" src="{{bus.image.url}}" alt="Card image cap"
+                    style="height: 150px;padding:5px" />
+                <div class="card-body">
+                    <a href="{% url 'bus-detail' bus.id%}">
+                        <h5 class="card-title">{{bus.name}}</h5>
+                    </a>
+                    <h6 class="text-secondary">Date: {{bus.date}}</h6>
+        
+        
+                </div>
+            </div>
+
+        
+        </div>
+                {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}

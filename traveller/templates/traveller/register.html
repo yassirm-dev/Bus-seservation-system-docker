@@ -1,0 +1,32 @@
+{% extends 'buses/base.html'%}
+{% load static%}
+{%  load crispy_forms_tags %}
+{% block content %}
+<div class="container text-center" style="margin-top:10%;" >
+
+   
+            <div class="content-section ">
+                <form method="POST"  id="visitor_form">
+                        {% csrf_token %}
+                    <fieldset class="form-group">
+                            <legend class="border-bottom mb-4 h3 text-center volkwov">Register Here</legend>
+                        <div class="form-group ">
+                           {{form|crispy}}
+                        <div class="form-group">
+                                <button class="btn btn-outline-info btn-block"  type="submit">Sign Up</button>
+                        </div>
+                    </fieldset> 
+                </form>
+                <div class="border-top pt-3">
+                    <small class="h5 text-white">
+                        Already have an account?
+                        <a href="{% url 'login' %}" class="ml-2 btn btn-info">Sign In</a>
+                    </small>
+
+                </div>
+            </div>
+      
+  
+
+{% endblock  %}
+    
