@@ -1,1 +1,2 @@
-# Bus-seservation-system-docker
+# Bus-Reservation-System
+Repository for an online bus reservation system.

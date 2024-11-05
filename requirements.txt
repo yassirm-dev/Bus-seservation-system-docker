@@ -1,0 +1,4 @@
+ django-crispy-forms
+Django>=3.2,<4.0
+django-mathfilters
+Pillow
