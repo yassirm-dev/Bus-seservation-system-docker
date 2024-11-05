@@ -40,6 +40,7 @@ urlpatterns = [
     path('profile/', traveller_views.profile,name="profile"),
     path('', include('buses.urls')),
     path('', include('traveller.urls')),
+    path('', include('django_prometheus.urls')),
     
 ]
 
