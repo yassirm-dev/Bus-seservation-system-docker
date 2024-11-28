@@ -18,10 +18,12 @@ from django.contrib import admin
 from django.urls import path,include
 from django.contrib.auth import views as auth_views
 from traveller import views as traveller_views
+from .views import request_count_view
 from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('request-count/', request_count_view, name='request_count'),
     path('login/', auth_views.LoginView.as_view(template_name='traveller/login.html'),name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='traveller/logout.html'),name='logout'),
     path('password-reset/',
